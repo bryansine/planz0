@@ -14,6 +14,21 @@ to get all the project packages: `pip install -r requirements.txt`
 
 How to run the web app:
 
-`cd src` to get into the django files
+1. **Clone the project repository:**
+ 
+   ```git clone https://github.com/MungaSoftwiz/planzo.git```
+2.  Navigate to the project directory:
+  ``` cd src``
+3. Create a Virtual Environment:
+ ``` python3 -m venv ...``
+4.  Activate the Virtual Environment (macOS/Linux):
+  ```source .../bin/activate```
+5.  Install Required Packages:
+ ``` pip install -r requirements.txt```
+6.  Migrate the Database:
+  ```python manage.py migrate```
+7.  Create a Super User:
+  ```python manage.py createsuperuser```
+8.  Start the Development Server:
+ ``` python3 manage.py runserver``` to start the app
 
-then `python3 manage.py runserver` to start the app
