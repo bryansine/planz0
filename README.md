@@ -11,4 +11,9 @@ Please do a `pip freeze requirements.txt` when you work on the project so that w
 
 to get all the project packages: `pip install -r requirements.txt`
 
+
+How to run the web app:
+
 `cd src` to get into the django files
+
+then `python3 manage.py runserver` to start the app
