@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
     #Our apps
     'userAuth',
-    'admin',
+    'events',
 ]
 
 MIDDLEWARE = [
