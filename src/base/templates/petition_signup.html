@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign the Petition</title>
+    <link rel="icon" href="{% static 'images/favicon1.ico' %}" type="image/x-icon">
+
+</head>
+<body>
+    <div class="container">
+        <h2 class="heading">Sign the Petition</h2>
+        <form method="post" class="petition-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-sign">Sign the Petition</button>
+        </form>
+        </div>
+    </div>
+</body>
+</html>
