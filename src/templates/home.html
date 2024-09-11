@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+   <title>About Plazo</title>
+   <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+   <header>
+       <h1>About Planzo</h1>
+   </header>
+   
+   <main>
+       <p>Welcome to the Planzo website! Planzo is a revolutionary platform that...</p>
+       <p>Planzo</p>
+       <img src="{% static 'images/logo.png' %}" alt="Planzo logo">
+       <a href="{% url 'about' %}">About</a>
+       
+   </main>
+   
+   <footer>
+       <p>&copy; 2024 Planzo. All rights reserved.</p>
+   </footer>
+</body>
+</html>
