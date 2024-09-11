@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #Our apps
-    'userAuth',
     'events',
     'base',
     'profiles',

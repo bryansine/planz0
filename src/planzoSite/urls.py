@@ -17,9 +17,21 @@ Including another URLconf
 from django.contrib import admin
 from base.views import home
 from django.urls import path, include
+from .views import loginView, signUpView, logoutUser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('base.urls')),
     path('home/', home),
+
+    # User login & authentication views
+    path('login/', loginView, name='login'),
+    path('register/', signUpView, name='register'),
+    path('logout/', logoutUser, name='logout'),
+
+    # Admin routes(external packages access)
+    path('accounts/login/', loginView, name='login'),
+    path('accounts/register/', signUpView, name='register'),
+
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
