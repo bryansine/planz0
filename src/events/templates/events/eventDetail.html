@@ -47,7 +47,34 @@
     {% block scripts %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
-    <!-- <script src={% static 'js/events.js' %}></script> -->
-     <script src="{% static 'events/js/events.js' %}"></script>
+    <script>
+      $(document).ready(function() {
+        $('#eventDetailsBookBtn').click(function() {
+          $('.ui.modal').modal('show');
+        });
+  
+        $('#eventDetailForm').submit(function(e) {
+          e.preventDefault(); 
+          var formData = $(this).serialize();
+  
+          $.ajax({
+            type: 'POST',
+            url : "{% url 'home:eventDetail' event.id %}",
+            data: formData,
+            success: function(response) {
+              console.log('Form submitted successfully', response);
+              $('#eventDetailsMessage').show();
+              setTimeout(function() { $('#eventDetailsMessage').fadeOut('slow'); }, 5000);
+            },
+            error: function(error) {
+              console.error('Error submitting form', error);
+            }
+          });
+  
+          $('.ui.modal').modal('hide');
+        });
+      });
+    </script>
+    {% endblock scripts %}
 </body>
 </html>

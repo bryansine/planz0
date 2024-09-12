@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events home</title>
+    {% load widget_tweaks %} 
 </head>
 <body>
     {% block content %}
@@ -108,5 +110,26 @@
     </form>
     </div>
     {% endblock content %}
+    {% block scripts %}
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#homeCreateBtn').click(function() {
+      $('.ui.modal').modal('show');
+    });
+  });
+
+
+  // Check if the session variable indicates a successful event creation
+  var eventCreated = {% if request.session.eventCreated %}true{% else %}false{% endif %};
+
+  if (eventCreated) {
+    $('#homeEventMessage').show();
+    setTimeout(function() {
+      $('#homeEventMessage').fadeOut('slow');
+    }, 5000);  // Hide after 5 seconds
+  }
+</script>
+{% endblock scripts %}
 </body>
+
 </html>
