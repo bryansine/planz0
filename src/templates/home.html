@@ -1,25 +1,86 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-<head>
-   <title>About Plazo</title>
-   <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
-   <header>
-       <h1>About Planzo</h1>
-   </header>
-   
-   <main>
-       <p>Welcome to the Planzo website! Planzo is a revolutionary platform that...</p>
-       <p>Planzo</p>
-       <img src="{% static 'images/logo.png' %}" alt="Planzo logo">
-       <a href="{% url 'about' %}">About</a>
-       
-   </main>
-   
-   <footer>
-       <p>&copy; 2024 Planzo. All rights reserved.</p>
-   </footer>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlanzO Booking | Home</title>
+    <link rel="stylesheet" href={% static "styles/styles.css" %} />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="#">PlanzO<span>Booker</span></a>
+        </div>
+        <ul class="nav-links">
+          {% comment %} <li><a href="{% url 'login/event' %}">Events</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <li><a href="{% url 'petition_signup' %}">Sign the petition</a></li> {% endcomment %}
+          <li><a href="{% url 'register' %}" class="cta">Sign Up</a></li>
+          <li><a href="{% url 'login' %}" class="cta">Sign in</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Welcome to PlanzO</h1>
+        <p>
+          Concerts, festivals, meetups, and more. Discover and reserve your spot
+          today!
+        </p>
+        <a href="#events" class="hero-btn">Explore Events</a>
+      </div>
+    </section>
+
+    <!-- Animated phrase section -->
+    <div class="animated-phrase">Embrace the Magic of Every Event!</div>
+    <!-- Event Categories Section -->
+    <section id="events" class="event-categories">
+      <h2>Event Categories</h2>
+      <div class="categories-grid">
+        <div class="category-card">
+          <img src="{% static 'images/concert.jpg' %}" alt="Concert" />
+          <h3>Concerts</h3>
+          <p>Live music events from the best artists.</p>
+        </div>
+        <div class="category-card">
+          <img src="{% static 'images/festival.jpg' %}" alt="Festival" />
+          <h3>Festivals</h3>
+          <p>Join popular festivals happening near you.</p>
+        </div>
+        <div class="category-card">
+          <img src="{% static 'images/meetup.jpg' %}" alt="Meetup" />
+          <h3>Meetups</h3>
+          <p>Connect with people who share your interests.</p>
+        </div>
+        <div class="category-card">
+          <img src="{% static 'images/sports.jpg' %}" alt="Sports" />
+          <h3>Sports Events</h3>
+          <p>Book tickets for sports events and games.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+      <h2>Start Booking Your Event Today!</h2>
+      <p>Sign up for an account and enjoy exclusive deals.</p>
+      <br />
+      <a href="#" class="cta-btn">Sign Up Now</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2024 PlanzOBooker. All rights reserved.</p>
+    </footer>
+  </body>
 </html>
