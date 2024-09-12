@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href={% static "styles/styles.css" %} />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <div class="ui segment" id="profileEditParent">
+        <form action="" method="POST" enctype="multipart/form-data" class="ui form" id="profileEditCard">
+          {% csrf_token %}
+          <h4 class="ui dividing header">Profile Information</h4>
+          <div class="field">
+            <div id="profileEditCardChild">
+              <img class="ui medium circular image" id="profileEditProfileIcon" src={{profile.profilePicture.url}}>
+              <div class="field">{{form.profilePicture}}</div>
+            </div>
+            
+            <label>Name</label>
+            <div class="two fields">
+              <div class="field">{{form.firstName}}</div>
+              <div class="field">{{form.lastName}}</div>
+            </div>
+            <label>Email</label>
+            <div class="two fields">
+              <div class="field">{{form.email}}</div>
+            </div>
+          </div>
+          <button class="ui primary button" type="submit">Save</button>
+        </form>
+      </div>
+</body>
+</html>
+{% block scripts %}
+<script type="text/javascript">
+    function profileEdit(){ window.location.href = "{% url 'profiles:editProfile' %}"; }
+</script>
+{% endblock scripts %}
+
+
