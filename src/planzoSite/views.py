@@ -44,3 +44,15 @@ def signUpView(request):
 def logoutUser(request):
     logout(request)
     return redirect('home')
+
+def events(request):
+    return render(request, 'events.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def petition_signup(request):
+    return render(request, 'petition_signup.html')
+
+def about(request):
+    return render(request, 'about.html')
