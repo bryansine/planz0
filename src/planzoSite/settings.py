@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+# import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -138,10 +139,33 @@ STATICFILES_DIRS = [
 
 
 
+# login settings for login aster failed login
+LOGIN_URL = 'accounts/login/'
+LOGOUT_URL = '/logout/'
+
+# login settings for redirecting ater successfull login
+
+LOGIN_REDIRECT_URL  = 'home:home'
+LOGOUT_REDIRECT_URL = 'home:home'
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# configuration For Sending Email with SMTP
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = ''   
+EMAIL_HOST_PASSWORD = ''  # app password for ''
+DEFAULT_FROM_EMAIL = ''
+
 
 
 # Append slash setting

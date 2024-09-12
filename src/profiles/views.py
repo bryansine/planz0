@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 # from django.contrib.auth.decorators import login_required
 
+
 # @login_required
 def profileView(request): # profile view
     profile       = Profile.objects.get(user=request.user) # Get the profile instance associated with the current user
@@ -16,6 +17,7 @@ def profileView(request): # profile view
         'profileEvents' : profileEvents,
     }
     return HttpResponse(template.render(context, request))
+
 
 
 # @login_required

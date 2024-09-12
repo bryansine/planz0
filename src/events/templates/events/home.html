@@ -1,135 +1,132 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events home</title>
+    {% extends 'base.html' %}
+    {% load static %}
+    {% block title %}planzO{% endblock title %}
     {% load widget_tweaks %} 
-</head>
-<body>
-    {% block content %}
-    {% include 'events/navigationBar.html' %}
-    <div id="homeMainDiv">
-
+  </head>
+  {% block content %}
+  {% include 'events/navigationBar.html' %}
+  <div id="homeMainDiv">
+  
     <div id="homeEventChildDiv">
-        {% if profile.role == "organizer" %}
+      {% if profile.role == "organizer" %}
         <button class="ui secondary button" id="homeCreateBtn">Create Event</button>
-        {% endif %}
-
-        <div class="ui success message" id="homeEventMessage">
+      {% endif %}
+  
+      <div class="ui success message" id="homeEventMessage">
         <div class="header">Succcess !</div>
         <p>Event Succcessfully Created</p>
-        </div>
+      </div>
     </div>
-
+  
     <div id="homeEventDiv">
-        {% for event in events %}
+      {% for event in events %}
     <div class="ui card" id="homeEventCard">
-        {% if event.poster %}
+      {% if event.poster %}
         <div class="image"><img src="{{ event.poster.url }}"></div>
-        {% endif %}
-
-        <div class="content">
+      {% endif %}
+  
+      <div class="content">
         <a class="header">{{ event.title }} || {{ event.date }}</a>
         <div class="meta"><span class="date">{{ event.venue }}</span></div>
         <div class="description">{{ event.description }}</div>
         
         <a class="item" href="{% url 'home:eventDetail' event.id %}">
-            <button class="ui right labeled icon button" id="eventDetailBtn">
+          <button class="ui right labeled icon button" id="eventDetailBtn">
             <i class="add icon"></i>
             Details
-            </button>
+          </button>
         </a>
-        </div>
-        
-        <div class="extra content"><a><i class="user icon"></i>{{ event.size }} Attendees</a></div>
-        <div class="extra content"><a><i class="dollar sign icon"></i>{{ event.price }}</a></div>
-        <div class="extra content"><a>Ksh : {{ event.ksh }}</a></div>
+      </div>
+      
+      <div class="extra content"><a><i class="user icon"></i>{{ event.size }} Attendees</a></div>
+      <div class="extra content"><a><i class="dollar sign icon"></i>{{ event.price }}</a></div>
+      <div class="extra content"><a>Ksh : {{ event.ksh }}</a></div>
     </div>
-    {% empty %}
+  {% empty %}
     <div class="ui icon message">
-        <i class="inbox icon"></i>
-        <div class="content">
+      <i class="inbox icon"></i>
+      <div class="content">
         <div class="header">Discover a World of Possibilities!</div>
         <p>While there are no events currently scheduled, our team is working diligently to bring you exciting and unforgettable experiences. </p>
-        </div>
+      </div>
     </div>
-    {% endfor %}
+  {% endfor %}
+  
+     
     </div>
-    </div>
-    <div class="ui modal">
+  
+  </div>
+  
+  <div class="ui modal">
     <div class="header">Create Event</div>
-
+  
     <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="ui form" id="homeeventCreateForm">
-
+      {% csrf_token %}
+      <div class="ui form" id="homeeventCreateForm">
+  
         <div class="field">
-            <label>Title</label>
-            {{form.title}}
+          <label>Title</label>
+          {{form.title}}
         </div>
-
+  
         <div class="field">
-            <label>Description</label>
-            {{form.description}}
+          <label>Description</label>
+          {{form.description}}
         </div>
-
+  
         <div class="field">
-            <label>Poster</label>
-            {{form.poster}}
+          <label>Poster</label>
+          {{form.poster}}
         </div>
-
+  
         <div class="field">
-            <label>Venue</label>
-            {{form.venue}}
+          <label>Venue</label>
+          {{form.venue}}
         </div>
-
+  
         <div class="field">
-            <label>Date</label>
-            {{form.date}}
+          <label>Date</label>
+          {{form.date}}
         </div>
-
+  
         <div class="field">
-            <label>Size</label>
-            {{form.size}}
+          <label>Size</label>
+          {{form.size}}
         </div>
-
+  
         <div class="field">
-            <label>Price</label>
-            {{form.price}}
+          <label>Price</label>
+          {{form.price}}
         </div>
-
-        </div>
-
+  
+      </div>
+  
         <div class="actions" id="eventActionBtns">
-            <div class="ui black deny button">Cancel</div>
-            <button class="ui secondary button" type="submit">Create</button>
+          <div class="ui black deny button">Cancel</div>
+          <button class="ui secondary button" type="submit">Create</button>
         </div>
-
+  
     </form>
-    </div>
-    {% endblock content %}
-    {% block scripts %}
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#homeCreateBtn').click(function() {
-      $('.ui.modal').modal('show');
+  </div>
+  {% endblock content %}
+  {% block scripts %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#homeCreateBtn').click(function() {
+        $('.ui.modal').modal('show');
+      });
     });
-  });
-
-
-  // Check if the session variable indicates a successful event creation
-  var eventCreated = {% if request.session.eventCreated %}true{% else %}false{% endif %};
-
-  if (eventCreated) {
-    $('#homeEventMessage').show();
-    setTimeout(function() {
-      $('#homeEventMessage').fadeOut('slow');
-    }, 5000);  // Hide after 5 seconds
-  }
-</script>
-{% endblock scripts %}
-</body>
-
-</html>
+  
+  
+    // Check if the session variable indicates a successful event creation
+    var eventCreated = {% if request.session.eventCreated %}true{% else %}false{% endif %};
+  
+    if (eventCreated) {
+      $('#homeEventMessage').show();
+      setTimeout(function() {
+        $('#homeEventMessage').fadeOut('slow');
+      }, 5000);  // Hide after 5 seconds
+    }
+  </script>
+  {% endblock scripts %}

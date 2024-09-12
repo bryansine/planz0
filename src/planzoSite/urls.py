@@ -23,20 +23,32 @@ from .views import loginView, signUpView, logoutUser, events, contact, petition_
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('base.urls')),
-    path('home/', home),
+    # path('events/', include('events')),
+    # path('home/', home),
+    
 
-    # User login & authentication views
+    # path('home/', home, name='home'),
     path('login/', loginView, name='login'),
-    path('register/', signUpView, name='register'),
-    path('logout/', logoutUser, name='logout'),
-    path('about/', about, name='about'),
-    path('events/', events, name='events'),
-    path('contact/', contact, name='contact'),
-    path('petition_signup/', petition_signup, name='Petition'),
+    path('signup/',signUpView, name='signup'),
+    path('accounts/login/', loginView, name='login'),
+    path('accounts/signup/', signUpView, name='signup'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    # path('', include('base.urls')), # added a base url
+    path('home/', include('events.urls', namespace='events')),
+    path('profiles/', include('profiles.urls', namespace='profiles')),
+
+    # # User login & authentication views
+    # path('login/', loginView, name='login'),
+    # path('signup/', signUpView, name='signup'),
+    # path('logout/', logoutUser, name='logout'),
+    # path('about/', about, name='about'),
+    # path('events/', events, name='events'),
+    # path('contact/', contact, name='contact'),
+    # path('petition_signup/', petition_signup, name='Petition'),
 
     # Admin routes(external packages access)
     path('accounts/login/', loginView, name='login'),
-    path('accounts/register/', signUpView, name='register'),
+    path('accounts/signup/', signUpView, name='signup'),
 
     path('accounts/', include('django.contrib.auth.urls')),
 ]

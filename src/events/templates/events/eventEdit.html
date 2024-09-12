@@ -1,74 +1,73 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Edit</title>
-    {% load widget_tweaks %} 
+    {% extends 'base.html' %}
+    {% load static %}
+    {% block title %}planzO Edit : {{event.id}}{% endblock title %}
 </head>
-<body>
-    {% block content %}
-    {% include 'events/navigationBar.html' %}
-    <div id="eventEditParent">
+{% block content %}
+{% include 'events/navigationBar.html' %}
+<div id="eventEditParent">
 
-        <div id="eventEditParentChildDiv">
-            <h4 class="ui dividing header">Event Edit : {{event.title}}</h4>
+    <div id="eventEditParentChildDiv">
+        <h4 class="ui dividing header">Event Edit : {{event.title}}</h4>
 
-            <form method="post" action="{% url 'home:eventDelete' event.id %}">
-                {% csrf_token %}
-                <button class="ui button" type="submit" id="eventDeleteBtn">Delete</button>
-            </form>
-        </div>
-        
-        <form class="ui form" method="POST" enctype="multipart/form-data">
+        <form method="post" action="{% url 'home:eventDelete' event.id %}">
             {% csrf_token %}
-
-            <div class="two fields">
-                <div class="field">
-                    <label>Title</label>
-                    {{form.title}}
-                </div>
-        
-                <div class="field">
-                    <label>Description</label>
-                    {{form.description}}
-                </div>
-            </div>
-
-            <div class="two fields">
-                <div class="field">
-                    <label>Poster</label>
-                    {{form.poster}}
-                </div>
-        
-                <div class="field">
-                    <label>Venue</label>
-                    {{form.venue}}
-                </div>
-            </div>
-
-
-            <div class="field">
-                <label>Date</label>
-                {{form.date}}
-            </div>
-
-            <div class="two fields">
-                <div class="field">
-                    <label>Size</label>
-                    {{form.size}}
-                </div>
-        
-                <div class="field">
-                    <label>Price</label>
-                    {{form.price}}
-                </div>
-            </div>
-
-            <button class="ui button" type="submit">Done</button>
+            <button class="ui button" type="submit" id="eventDeleteBtn">Delete</button>
         </form>
     </div>
-    {% endblock content %}
-</body>
-</html>
+    
+    <form class="ui form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="two fields">
+            <div class="field">
+                <label>Title</label>
+                {{form.title}}
+            </div>
+      
+            <div class="field">
+                <label>Description</label>
+                {{form.description}}
+            </div>
+        </div>
+
+        <div class="two fields">
+            <div class="field">
+                <label>Poster</label>
+                {{form.poster}}
+            </div>
+    
+            <div class="field">
+                <label>Venue</label>
+                {{form.venue}}
+            </div>
+        </div>
+
+
+        <div class="field">
+            <label>Date</label>
+            {{form.date}}
+        </div>
+
+        <div class="two fields">
+            <div class="field">
+                <label>Size</label>
+                {{form.size}}
+            </div>
+    
+            <div class="field">
+                <label>Price</label>
+                {{form.price}}
+            </div>
+        </div>
+
+        <button class="ui button" type="submit">Done</button>
+    </form>
+
+</div>
+{% endblock content %}
+{% block scripts %}
+<script type="text/javascript">
+
+</script>
+{% endblock scripts %}

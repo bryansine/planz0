@@ -4,9 +4,25 @@ from .forms import SignUpForm, EmailAuthenticationForm
 from django.shortcuts import redirect, render, redirect
 
 
+# def loginView(request):
+#     if request.method == 'POST':
+#         form = EmailAuthenticationForm(request, request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
+#             user = authenticate(request, username=username, password=password)
+
+#             if user is not None:
+#                 login(request, user)
+#                 return redirect('home:home')
+#     else:
+#         form = EmailAuthenticationForm()
+#     return render(request, 'registration/login.html', { 'form': form })
+    
+    
 def loginView(request):
     if request.method == 'POST':
-        form = EmailAuthenticationForm(request, request.POST)
+        form = EmailAuthenticationForm(request.POST)  # Pass only request.POST
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -15,9 +31,16 @@ def loginView(request):
             if user is not None:
                 login(request, user)
                 return redirect('home:home')
+            else:
+                # Add an error message to indicate invalid login
+                form.add_error(None, "Invalid username or password")
     else:
         form = EmailAuthenticationForm()
-    return render(request, 'authentication/login.html', { 'form': form })
+        
+    return render(request, 'registration/login.html', {'form': form})
+    
+    
+    
     
 
 def signUpView(request):
@@ -39,7 +62,7 @@ def signUpView(request):
     else:
         form = SignUpForm()
 
-    return render(request, 'registration/register.html', {'form': form})
+    return render(request, 'authentication/signup.html', {'form': form})
 
 def logoutUser(request):
     logout(request)
