@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from base.views import home
 from django.urls import path, include
-from .views import loginView, signUpView, logoutUser
+from .views import loginView, signUpView, logoutUser, events, contact, petition_signup, about
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +29,10 @@ urlpatterns = [
     path('login/', loginView, name='login'),
     path('register/', signUpView, name='register'),
     path('logout/', logoutUser, name='logout'),
+    path('about/', about, name='about'),
+    path('events/', events, name='events'),
+    path('contact/', contact, name='contact'),
+    path('petition_signup/', petition_signup, name='Petition'),
 
     # Admin routes(external packages access)
     path('accounts/login/', loginView, name='login'),
