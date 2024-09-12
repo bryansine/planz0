@@ -1,19 +1,51 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-
+    <link rel="stylesheet" href={% static "styles/styles.css" %} />
+    {% load widget_tweaks %} 
 </head>
 <body>
-    <div class="register-container">
-        <h2>Register</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Register</button>
-        </form>
+    {% block content %}
+    <div class="parentDiv">
+        <div class="childCard">
+            <form action="" method="post">
+                {% csrf_token %}
+                <h4 class="cardTitle">Create Account</h4>
+    
+    
+                <div class="userInputDiv" data-text="Username">
+                    {% render_field form.username placeholder=form.username.label class+="form-control"  %}
+                </div>
+    
+                <div class="userInputDiv" data-text="Email">  
+                    {% render_field form.email placeholder=form.email.label class+="form-control" %}
+                </div>
+                
+                <div class="userInputRoleDiv" data-text="User Types">  
+                    {% render_field form.role placeholder=form.role.label class+="form-control" %}
+                </div>
+    
+                <div class="userInputDiv" data-text="Password">
+                    {% render_field form.password1 placeholder=form.password1.label class+="form-control"  %}
+                    <span class="border"></span>
+                </div>
+    
+                <div class="userInputDiv" data-text="Password">
+                    {% render_field form.password2 placeholder=form.password2.label class+="form-control"  %}
+                    <span class="border"></span>
+                </div>
+    
+                <button class="loginBtn" type="submit">
+                    Sign Up<div class="arrow-wrapper"><div class="arrow"></div></div>
+                </button>
+            </form>
+            <a class="link" href="{% url 'login' %}">Already Have an Account</a>
+        </div>
     </div>
+    {% endblock content %}
 </body>
 </html>

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'events',
     'base',
     'profiles',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
