@@ -1,7 +1,12 @@
 <head>
     {% extends 'base.html' %}
     {% load static %}
-    {% block title %}planzo | {{profile}}{% endblock title %}   
+    {% block title %}planzo | {{profile}}{% endblock title %}
+    {% block scripts %}
+    <script type="text/javascript">
+        function profileEdit(){ window.location.href = "{% url 'profiles:editprofile' %}"; }
+    </script>
+    {% endblock scripts %}
 </head>
 {% block content %}
 {% include 'events/navigationBar.html' %}
@@ -59,9 +64,3 @@
 
 </div>
 {% endblock content %}
-{% block scripts %}
-<script type="text/javascript">
-    function profileEdit(){ window.location.href = "{% url 'profiles:editProfile' %}"; }
-</script>
-{% endblock scripts %}
-
