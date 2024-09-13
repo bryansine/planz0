@@ -23,7 +23,7 @@
       {% for event in events %}
     <div class="ui card" id="homeEventCard">
       {% if event.poster %}
-        <div class="image"><img src="{{ event.poster.url }}"></div>
+        <div class="image"><img src="{{ event.poster.url }}" alt="Event Poster"></div>
       {% endif %}
   
       <div class="content">
