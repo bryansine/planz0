@@ -24,6 +24,8 @@
     <div class="ui card" id="homeEventCard">
       {% if event.poster %}
         <div class="image"><img src="{{ event.poster.url }}" alt="Event Poster"></div>
+        {% else %}
+        <p>No poster available for {{ event.title }}</p>
       {% endif %}
   
       <div class="content">
