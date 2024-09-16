@@ -17,6 +17,16 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'role', 'email', 'password1', 'password2')
 
 
+# class EmailAuthenticationForm(forms.Form):
+#     username = forms.CharField(max_length=254, widget=forms.TextInput(attrs={'autofocus': True, 'placeholder': 'Username'}))
+
+
 class EmailAuthenticationForm(forms.Form):
-    username = forms.CharField(max_length=254, widget=forms.TextInput(attrs={'autofocus': True, 'placeholder': 'Username'}))
-    
+    username = forms.CharField(
+        max_length=254, 
+        widget=forms.TextInput(attrs={'autofocus': True, 'placeholder': 'Username'})
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'Password'}),
+        required=True
+    )

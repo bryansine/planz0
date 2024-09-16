@@ -6,11 +6,11 @@ class PetitionSignup(models.Model):
     name = models.CharField(max_length=100)  
     email = models.EmailField()  
     message = models.TextField(blank=True, null=True)  
-    signed_at = models.DateTimeField(auto_now_add=True)  
+    signed_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         # Return the name and email of the person signing the petition
-        return f'{self.name , self.email}'
+        return f'{self.name}'
     class Meta:
         # Sort the petition signups by the date they were signed up, in descending order
         ordering = ['signed_at']

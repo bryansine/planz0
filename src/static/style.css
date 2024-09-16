@@ -1,0 +1,151 @@
+#navbarMainDiv{
+    width: 100%;
+    border-bottom: 1px solid #B0BEC5;
+}
+
+#homeMainDiv{
+    display: flex;
+    width: 80%;
+    padding-top: 20px;
+    flex-direction: column;
+}
+
+#homeEventChildDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+#homeEventMessage{ 
+    display: none;
+    margin: 0px; 
+}
+
+#homeCreateBtn{ 
+    height: 40px;
+    width: 150px; 
+    margin-right: 20px;
+}
+
+#homeEventDiv{
+    margin-top: 30px;
+    height: 70vh;
+    overflow-y: auto;
+}
+
+#homeEventCard{
+    width: 60%;
+    margin-bottom: 30px;
+}
+
+#homeeventCreateForm{ margin: 10px; }
+
+#eventDetailsParent{
+    display: flex;
+    width: 80%;
+    padding-top: 20px;
+    flex-direction: row;
+}
+
+#eventDetailsParentCard{ width: 43%; }
+
+#eventDetailsMessage{ 
+    display: none; 
+    height: min-content;
+    margin: 0px 0px 0px 20px; 
+}
+
+#eventDetailsBookBtn, #eventDetailBtn{ margin-top: 10px; }
+
+#eventDetailForm p{
+    margin: 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#eventEditParent {
+    width: 80%;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #90A4AE;
+}
+
+#eventEditParentChildDiv {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+#eventEditParentChildDiv h4{
+    padding: 0px;
+    margin-top: 6px;
+    margin-right: 50px;
+}
+
+#eventDeleteBtn {
+    color: #ffffff;
+    background: rgba(255, 0, 0, 0.801);
+    border: none;
+}
+
+#eventEditParent h4{ margin-bottom: 20px; }
+
+#eventEditParent form .ui.button { margin-top: 10px; }
+
+#profileParentDiv{
+    display: flex;
+    width: 100%;
+    margin-top: 30px;
+    padding-left: 10%;
+    align-items: center;
+    flex-direction: row;
+}
+
+#profileCard{ width: 30%; }
+
+#profileEvents{ 
+    width: 50%;
+    max-height: 400px;
+    margin-left: 20px;
+    overflow-y: auto;
+}
+
+#profileEventsCard{
+    width: 90%;
+    margin-bottom: 30px;
+}
+
+#profileEditParent{
+    display: flex;
+    width: 100%;
+    border: none;
+    padding-left: 10%;
+}
+
+#profileEditCard{
+    display: flex;
+    width: 40%;
+    border-radius: 5px;
+    flex-direction: column;
+    border: 1px solid #B0BEC5;
+    padding: 0px 15px 15px 15px;
+}
+
+#profileEditCardChild{
+    display: flex;
+    padding: 0px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+#profileEditProfileIcon{
+    display: flex;
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+#profileEditCardChild div{ margin-right: 20px; }

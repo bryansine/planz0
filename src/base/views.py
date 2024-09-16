@@ -11,7 +11,7 @@ def about(request):
 
 
 def petition_signup(request):
-    form = PetitionSignupForm()  
+    form = PetitionSignupForm() 
     
    
     if request.method == 'POST':
@@ -20,7 +20,6 @@ def petition_signup(request):
         if form.is_valid():
             form.save()  
             messages.success(request, 'Thank you for signing the petition!')  
-            return redirect('home')  
-    
+            return redirect('home')
 
     return render(request, 'petition_signup.html', {'form': form})

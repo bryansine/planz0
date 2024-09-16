@@ -1,0 +1,38 @@
+<head>
+  {% extends 'base.html' %}
+  {% load static %}
+  {% block title %}planzO | edit {{profile}}{% endblock title %}   
+</head>
+{% block content %}
+{% include 'events/navigationBar.html' %}
+<div class="ui segment" id="profileEditParent">
+<form action="" method="POST" enctype="multipart/form-data" class="ui form" id="profileEditCard">
+  {% csrf_token %}
+  <h4 class="ui dividing header">Profile Information</h4>
+  <div class="field">
+    <div id="profileEditCardChild">
+      <img class="ui medium circular image" id="profileEditProfileIcon" src={{profile.profilePicture.url}}>
+      <div class="field">{{form.profilePicture}}</div>
+    </div>
+    
+    <label>Name</label>
+    <div class="two fields">
+      <div class="field">{{form.firstName}}</div>
+      <div class="field">{{form.lastName}}</div>
+    </div>
+    <label>Email</label>
+    <div class="two fields">
+      <div class="field">{{form.email}}</div>
+    </div>
+  </div>
+  <button class="ui primary button" type="submit">Save</button>
+</form>
+</div>
+{% endblock content %}
+{% block scripts %}
+<script type="text/javascript">
+
+</script>
+{% endblock scripts %}
+
+
