@@ -1,34 +1,80 @@
 # Planzo
 
-This is an event management platform where users can browse and purchase tickets for various events. The platform allows event organizers to list their events and provides users with a seamless experience for discovering, booking, and managing their tickets. Whether it's concerts, conferences, or workshops, this platform aims to simplify the ticketing process.
+**Planzo** is a web application designed to streamline event planning and organization, allowing users to create, manage, and track events effortlessly.
 
-## 🚧 Work in Progress
+## Features
 
-This project is currently under development. Features, documentation, and code are subject to change as the project evolves.
+- Create, edit, and delete events
+- Manage event details (date, time, location)
+- Track upcoming and past events
+- User-friendly interface for organizing multiple events
 
-Please create your virtual environment first so that we can all have the required packages for this project when you create the requirements.txt
-Please do a `pip freeze requirements.txt` when you work on the project so that we can get all dependencies from there.
+## Technologies Used
 
-to get all the project packages: `pip install -r requirements.txt`
+- **Django 5.1.1**: The primary web framework.
+- **asgiref 3.8.1**: Manages asynchronous operations in Django.
+- **django-widget-tweaks 1.5.0**: Tools for modifying form attributes and layout.
+- **pillow 10.4.0**: Python imaging library for handling media files.
+- **python-decouple 3.8**: Manages environment variables and sensitive information.
+- **sqlparse 0.5.1**: SQL parsing and formatting in Django's ORM.
+- **typing_extensions 4.12.2**: Supports backporting newer type hints.
+- **Semantic UI**: A CSS framework used to enhance the user interface, providing a clean and modern look.
 
+## Installation
 
-How to run the web app:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/MungaSoftwiz/planzo.git
+   ```
 
-1. **Clone the project repository:**
- 
-   ```git clone https://github.com/MungaSoftwiz/planzo.git```
-2.  Navigate to the project directory:
-  ``` cd src``
-3. Create a Virtual Environment:
- ``` python3 -m venv ...``
-4.  Activate the Virtual Environment (macOS/Linux):
-  ```source .../bin/activate```
-5.  Install Required Packages:
- ``` pip install -r requirements.txt```
-6.  Migrate the Database:
-  ```python manage.py migrate```
-7.  Create a Super User:
-  ```python manage.py createsuperuser```
-8.  Start the Development Server:
- ``` python3 manage.py runserver``` to start the app
+2. Navigate to the project directory:
+   ```bash
+   cd planzo
+   ```
 
+3. Create and activate a virtual environment:
+
+On macOS/Linux:
+
+   ```bash
+   python3 -m venv env
+   source env/bin/activate
+   ```
+
+On Windows:
+
+   ```bash
+   python -m venv env
+   .\env\Scripts\activate
+   ```
+
+4. Install the required dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. Set up environment variables in a .env file:
+
+env
+   ```
+   DEBUG=True
+   SECRET_KEY=your-secret-key
+   ```
+
+6. Apply database migrations:
+
+   ```bash
+   python manage.py migrate
+   ```
+
+7. Run the development server:
+
+   ```bash
+   python manage.py runserver
+   ```
+
+- Access the application at http://127.0.0.1:8000/.
+
+### Usage
+Once the server is running, users can create an account, log in, and start creating, managing, and tracking events.
