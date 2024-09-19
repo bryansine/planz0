@@ -1,6 +1,8 @@
 # Planzo
 
 **Planzo** is a web application designed to streamline event planning and organization, allowing users to create, manage, and track events effortlessly.
+![image](https://github.com/user-attachments/assets/0fb20352-d3ca-418d-9cbd-275d57865a19)
+
 
 ## Features
 
