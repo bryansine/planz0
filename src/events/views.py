@@ -97,9 +97,9 @@ def sendUUID(subject, recipient_name, sender_email, recipient_email, uuid, event
     We're thrilled to have you join us and can't wait to see you there!
 
     Best regards,
-    planz) Events Team
+    planzO) Events Team
     """
-    send_mail(subject, message, 'planz) Events <astroevents0@gmail.com>', [recipient_email], fail_silently=False)
+    send_mail(subject, message, 'planzO) Events <planzoevents@gmail.com>', [recipient_email], fail_silently=False)
 
 
 
