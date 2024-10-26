@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-# import dj_database_url
 import os
 from decouple import config
 
@@ -35,10 +34,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://localhost:8000',
     # Add other trusted origins if needed
 ]
-
-#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 # client id
-#107161136898-ffasdog2737rmj91p8sk03dbl7v1dv3p.apps.googleusercontent.com #client id
-# Application definition
 
 SITE_ID = 2
 
