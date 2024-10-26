@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-s+0153*#^!(f75^nnea^atd8%xs*n@hga4mpqc96@8cvy=p_xx'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -64,14 +64,20 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google', # Google authentication
 ]
 
+
+# Load Google OAuth credentials from .env
+GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID')
+GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET')
+
+# Social account providers settings for allauth
 SOCIAL_ACCOUNT_PROVIDERS = {
     "google": {
         "SCOPE": ["profile", "email"],
         "AUTH_PARAMS": {"access_type": "online"},
+        # Add client details
+        "CLIENT_ID": GOOGLE_CLIENT_ID,
+        "SECRET": GOOGLE_CLIENT_SECRET,
     }
-    
-        
-    
 }
 
 MIDDLEWARE = [
