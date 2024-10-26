@@ -1,110 +1,125 @@
 {% load static %}
+{% load socialaccount %} 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!--Custom css-->
+    <!-- Custom CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&display=swap" rel="stylesheet">
-    <!-- semantic UI -->
+    <!-- Semantic UI -->
     <link rel="stylesheet" type='text/css' href=" https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <title>{% block title %}planzO - Sign Up{% endblock title %}</title>
     {% load widget_tweaks %} 
 </head>
 <style>
-body {
-    font-family: "Raleway", sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
+  body {
+      font-family: "Raleway", sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
   }
 
   .parentDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
   }
 
   .childCard {
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    width: 400px;
-    text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      width: 400px;
+      text-align: center;
   }
 
   .cardTitle {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
   }
 
   /* Input Label */
   .inputLabel {
-    display: block;
-    text-align: left;
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 5px;
+      display: block;
+      text-align: left;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 5px;
   }
 
-  /* Input Div Styling */
   .userInputDiv,
   .userInputRoleDiv {
-    margin-bottom: 20px;
+      margin-bottom: 20px;
   }
 
-  /* Border Under Input */
   .border {
-    display: block;
-    height: 1px;
-    background-color: #000;
-    margin-top: 2px;
+      display: block;
+      height: 1px;
+      background-color: #000;
+      margin-top: 2px;
   }
 
-  /* Button Styling */
   .loginBtn {
-    background-color: #f39c12;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 5px;
+      background-color: #f39c12;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 5px;
   }
 
-  /* Arrow Button */
   .loginBtn .arrow-wrapper {
-    display: inline-block;
-    margin-left: 10px;
+      display: inline-block;
+      margin-left: 10px;
   }
 
   .loginBtn .arrow {
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 3px;
-    transform: rotate(45deg);
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(45deg);
   }
 
-  /* Link Styling */
   .link {
-    display: block;
-    margin-top: 10px;
-    color: #f39c12;
-    text-decoration: none;
+      display: block;
+      margin-top: 10px;
+      color: #f39c12;
+      text-decoration: none;
   }
 
   .link:hover {
-    text-decoration: underline;
+      text-decoration: underline;
+  }
+
+  /* Google Login Button Styling */
+  .googleLoginBtn {
+      background-color: #4285F4;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 5px;
+      margin-top: 20px;
+      text-align: center;
+      font-size: 16px;
+  }
+
+  .googleLoginBtn:hover {
+      background-color: #357ae8;
   }
 </style>
+
 {% block content %}
 <div class="parentDiv">
     <div class="childCard">
@@ -112,9 +127,8 @@ body {
             {% csrf_token %}
             <h4 class="cardTitle">Create Account</h4>
 
-
             <div class="userInputDiv" data-text="Username">
-                {% render_field form.username placeholder=form.username.label class+="form-control"  %}
+                {% render_field form.username placeholder=form.username.label class+="form-control" %}
             </div>
 
             <div class="userInputDiv" data-text="Email">  
@@ -126,12 +140,12 @@ body {
             </div>
 
             <div class="userInputDiv" data-text="Password">
-                {% render_field form.password1 placeholder=form.password1.label class+="form-control"  %}
+                {% render_field form.password1 placeholder=form.password1.label class+="form-control" %}
                 <span class="border"></span>
             </div>
 
             <div class="userInputDiv" data-text="Password">
-                {% render_field form.password2 placeholder=form.password2.label class+="form-control"  %}
+                {% render_field form.password2 placeholder=form.password2.label class+="form-control" %}
                 <span class="border"></span>
             </div>
 
@@ -139,68 +153,21 @@ body {
                 Sign Up<div class="arrow-wrapper"><div class="arrow"></div></div>
             </button>
         </form>
+
+        <!-- Google Login Button -->
+        <a href="{% provider_login_url 'google' %}?next=/" class="googleLoginBtn">Login with Google</a>
+
+        {% if user.is_authenticated %}
+        <p>You are signed in as {{user.email}}</p>
+        <a href="Logout">Logout</a>
+        {% endif %}
+
         <a class="link" href="{% url 'login' %}">Already Have an Account</a>
     </div>
 </div>
 {% endblock content %}
+
 {% block scripts %}
 <script type="text/javascript">
 </script>
 {% endblock scripts %}
-
-
-
-
-
-
-{% comment %} {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href={% static "styles/styles.css" %} />
-    {% load widget_tweaks %} 
-</head>
-<body>
-    {% block content %}
-    <div class="parentDiv">
-        <div class="childCard">
-            <form action="" method="post">
-                {% csrf_token %}
-                <h4 class="cardTitle">Create Account</h4>
-    
-    
-                <div class="userInputDiv" data-text="Username">
-                    {% render_field form.username placeholder=form.username.label class+="form-control"  %}
-                </div>
-    
-                <div class="userInputDiv" data-text="Email">  
-                    {% render_field form.email placeholder=form.email.label class+="form-control" %}
-                </div>
-                
-                <div class="userInputRoleDiv" data-text="User Types">  
-                    {% render_field form.role placeholder=form.role.label class+="form-control" %}
-                </div>
-    
-                <div class="userInputDiv" data-text="Password">
-                    {% render_field form.password1 placeholder=form.password1.label class+="form-control"  %}
-                    <span class="border"></span>
-                </div>
-    
-                <div class="userInputDiv" data-text="Password">
-                    {% render_field form.password2 placeholder=form.password2.label class+="form-control"  %}
-                    <span class="border"></span>
-                </div>
-    
-                <button class="loginBtn" type="submit">
-                    Sign Up<div class="arrow-wrapper"><div class="arrow"></div></div>
-                </button>
-            </form>
-            <a class="link" href="{% url 'login' %}">Already Have an Account</a>
-        </div>
-    </div>
-    {% endblock content %}
-</body>
-</html> {% endcomment %}

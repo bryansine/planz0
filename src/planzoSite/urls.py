@@ -25,34 +25,22 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('base.urls')),
-    # path('events/', include('events')),
-    # path('home/', home),
     
 
-    # path('home/', home, name='home'),
     path('login/', loginView, name='login'),
     path('signup/',signUpView, name='signup'),
     path('accounts/login/', loginView, name='login'),
     path('accounts/signup/', signUpView, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
-    # path('', include('base.urls')), # added a base url
     path('home/', include('events.urls', namespace='events')),
     path('profiles/', include('profiles.urls', namespace='profiles')),
-
-    # # User login & authentication views
-    # path('login/', loginView, name='login'),
-    # path('signup/', signUpView, name='signup'),
-    # path('logout/', logoutUser, name='logout'),
-    # path('about/', about, name='about'),
-    # path('events/', events, name='events'),
-    # path('contact/', contact, name='contact'),
-    # path('petition_signup/', petition_signup, name='Petition'),
 
     # Admin routes(external packages access)
     path('accounts/login/', loginView, name='login'),
     path('accounts/signup/', signUpView, name='signup'),
-
     path('accounts/', include('django.contrib.auth.urls')),
+    # url for social logins
+    path("accounts/", include("allauth.urls")),
 ]
 
 # url patterns for events"

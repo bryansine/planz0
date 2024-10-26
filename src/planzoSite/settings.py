@@ -36,7 +36,11 @@ CSRF_TRUSTED_ORIGINS = [
     # Add other trusted origins if needed
 ]
 
+#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 # client id
+#107161136898-ffasdog2737rmj91p8sk03dbl7v1dv3p.apps.googleusercontent.com #client id
 # Application definition
+
+SITE_ID = 2
 
 INSTALLED_APPS = [
     #Django apps
@@ -52,7 +56,23 @@ INSTALLED_APPS = [
     'base',
     'profiles',
     'widget_tweaks',
+    #social login
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google', # Google authentication
 ]
+
+SOCIAL_ACCOUNT_PROVIDERS = {
+    "google": {
+        "SCOPE": ["profile", "email"],
+        "AUTH_PARAMS": {"access_type": "online"},
+    }
+    
+        
+    
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,6 +82,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # allauth.middleware.
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'planzoSite.urls'
@@ -143,12 +165,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_URL = 'accounts/login/'
 LOGOUT_URL = '/logout/'
 
-# login settings for redirecting ater successfull login
-
-LOGIN_REDIRECT_URL  = 'home:home'
-LOGOUT_REDIRECT_URL = 'home:home'
-
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -171,3 +187,14 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # Append slash setting
 APPEND_SLASH = False
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+# login settings for redirecting ater successfull login
+LOGIN_REDIRECT_URL = 'home:home'
+LOGOUT_REDIRECT_URL = 'home:home'
+
+
+
