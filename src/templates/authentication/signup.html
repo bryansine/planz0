@@ -153,9 +153,10 @@
                 Sign Up<div class="arrow-wrapper"><div class="arrow"></div></div>
             </button>
         </form>
-
+{% comment %} 
         <!-- Google Login Button -->
-        <a href="{% provider_login_url 'google' %}?next=/" class="googleLoginBtn">Login with Google</a>
+        <a href="{% provider_login_url 'google' %}?next=/" class="googleLoginBtn">Login with Google</a> 
+{% endcomment %}
 
         {% if user.is_authenticated %}
         <p>You are signed in as {{user.email}}</p>
