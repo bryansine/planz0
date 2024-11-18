@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/favicon1.ico' %}" type="image/x-icon">
+    <title>Awaiting Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f9;
+            padding: 20px;
+        }
+        .message {
+            background: #ffeb3b;
+            padding: 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Awaiting Payment Confirmation</h1>
+    <div class="message">
+        <p>Your payment request has been sent.</p>
+        <p>Please check your phone and enter your M-PESA PIN to complete the payment.</p>
+        <p>Phone Number: {{ phone_number }}</p>
+        <p>Amount: KES {{ amount }}</p>
+    </div>
+    <a href="{% url "check_payment_status" %}" class="btn">Check Payment Status</a>
+</body>
+</html>

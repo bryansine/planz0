@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from base.views import home
 from django.urls import path, include
-from .views import loginView, signUpView, logoutUser, events, contact, petition_signup, about
+from .views import loginView, signUpView, logoutUser, events, contact, petition_signup, about, pay, check_payment_status
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -34,6 +34,11 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('home/', include('events.urls', namespace='events')),
     path('profiles/', include('profiles.urls', namespace='profiles')),
+    #payment urls
+    path('daraja/', include('daraja.urls')),  #mpesa daraja url
+    path('pay/', pay, name='pay'),  # mpesay daraja
+    path('check-payment-status/', check_payment_status, name='check_payment_status'),
+    
 
     # Admin routes(external packages access)
     path('accounts/login/', loginView, name='login'),

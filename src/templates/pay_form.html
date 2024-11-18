@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/favicon1.ico' %}" type="image/x-icon">
+    <title>Make a Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #009c3b, #ffffff);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .payment-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .payment-header {
+            margin-bottom: 20px;
+        }
+        .payment-header img {
+            max-width: 100px;
+        }
+        .payment-header h1 {
+            font-size: 1.5rem;
+            color: #009c3b;
+            margin: 10px 0 0;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input {
+            display: block;
+            width: calc(100% - 20px);
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            width: calc(100% - 20px);
+            margin: 10px auto;
+            padding: 10px;
+            background: #009c3b;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #006628;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <div class="payment-header">
+            <a href=" {% url "pay" %} "  > 
+            <img alt="M-PESA Logo" src="{% static "images/mpesa.png" %}">
+            </a>            
+            <h1>Pay with M-PESA</h1>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="phone_number" placeholder="Enter your phone number" required>
+            <input type="number" name="amount" placeholder="Enter amount" required>
+            <button type="submit">Pay Now</button>
+        </form>
+        <footer>
+            &copy; 2024 M-PESA Payment Services. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>

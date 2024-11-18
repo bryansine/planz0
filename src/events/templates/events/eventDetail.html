@@ -71,7 +71,8 @@
         <div class="meta"><span class="date">{{ event.venue }}</span></div>
         <div class="description">{{ event.description }}</div>
         {% if event.attendees.count <= event.size and profile.role == "attendee" %}
-          <button class="ui secondary button" type="submit" id="eventDetailsBookBtn">Book Now</button>
+        <button class="ui secondary button" type="submit" id="eventDetailsBookBtn">Book Now</button>
+          
         {% endif %}
       </div>
       <div class="extra content"><a><i class="user icon"></i>{{ event.size }} Attendees</a></div>
@@ -80,7 +81,8 @@
     </div>
     <div class="ui success message" id="eventDetailsMessage">
       <div class="header">Success!</div>
-      <p>Event successfully booked.</p>
+      <p>{{ profile.user }}, You have successfully booked the Event.</p>
+      <p>You can now go back and make the payment to complete your booking and secure your slot.</p>
     </div>
   </div>
   <div class="ui modal">
@@ -90,9 +92,33 @@
       <p>Thank you for choosing to book our event!</p>
       <p>Your reservation is almost complete. To finalize your booking, we'll send you a unique 9-character UID (Unique Identifier) via email.</p>
       <p>This UID is important and will help us identify your reservation.</p>
+    
+      <p>**Payment Options:**</p>
+      <ul>
+        <li>**MPESA:**
+          <ol>
+            <li>Go to M-PESA Menu</li>
+            <li>Select Lipa Na M-PESA</li>
+            <li>Enter Paybill Number: [ 522533 ]</li>
+            <li>Enter Account Number: [ 7791221 ]</li>
+            <li>Enter Amount: Ksh. {{ event.ksh }} </li>
+            <li>Enter M-PESA PIN and Confirm</li>
+          </ol>
+        </li>
+        
+        <li> 
+           <strong> Or <strong>
+          <br />
+          <p> use the provided payment option below:</p>
+        
+        </li>
+      </ul>
+    
+    
       <div class="actions">
         <div class="ui black deny button">Cancel</div>
         <button class="ui secondary button" type="submit">Book</button>
+        <button class="ui secondary button" type="menu"> <a href="{% url 'pay' %}" class="cta">pay</a> </button>   
       </div>
     </form>
   </div>
@@ -132,86 +158,3 @@
 </body>
 </html>
 
-
-
-
-{% comment %} {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href={% static "styles/styles.css" %} />
-</head>
-<body>
-    {% block content %}
-    {% include 'events/navigationBar.html' %}
-    <div id="eventDetailsParent">
-      <div class="ui card" id="eventDetailsParentCard">
-        <div class="image"><img src="{{ event.poster.url }}" alt="{{ event.title }} poster"></div>
-        <div class="content">
-          <a class="header">{{ event.title }} || {{ event.date }}</a>
-          <div class="meta"><span class="date">{{ event.venue }}</span></div>
-          <div class="description">{{ event.description }}</div>
-          {% if event.attendees.count <= event.size and profile.role == "attendee" %}
-            <button class="ui secondary button" type="submit" id="eventDetailsBookBtn">Book Now</button>
-          {% endif %}
-        </div>
-        <div class="extra content"><a><i class="user icon"></i>{{ event.size }} Attendees</a></div>
-        <div class="extra content"><a><i class="dollar sign icon"></i>{{ event.price }}</a></div>
-        <div class="extra content"><a>Ksh: {{ event.ksh }}</a></div>
-      </div>
-      <div class="ui success message" id="eventDetailsMessage">
-        <div class="header">Success!</div>
-        <p>Event successfully booked.</p>
-      </div>
-    </div>
-    <div class="ui modal">
-      <div class="header">Book Event</div>
-      <form action="" method="POST" id="eventDetailForm" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>Thank you for choosing to book our event!</p>
-        <p>Your reservation is almost complete. To finalize your booking, we'll send you a unique 9-character UID (Unique Identifier) via email.</p>
-        <p>This UID is important and will help us identify your reservation.</p>
-        <div class="actions">
-          <div class="ui black deny button">Cancel</div>
-          <button class="ui secondary button" type="submit">Book</button>
-        </div>
-      </form>
-    </div>
-    {% endblock content %}
-    {% block scripts %}
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        $('#eventDetailsBookBtn').click(function() {
-          $('.ui.modal').modal('show');
-        });
-  
-        $('#eventDetailForm').submit(function(e) {
-          e.preventDefault(); 
-          var formData = $(this).serialize();
-  
-          $.ajax({
-            type: 'POST',
-            url : "{% url 'home:eventDetail' event.id %}",
-            data: formData,
-            success: function(response) {
-              console.log('Form submitted successfully', response);
-              $('#eventDetailsMessage').show();
-              setTimeout(function() { $('#eventDetailsMessage').fadeOut('slow'); }, 5000);
-            },
-            error: function(error) {
-              console.error('Error submitting form', error);
-            }
-          });
-  
-          $('.ui.modal').modal('hide');
-        });
-      });
-    </script>
-    {% endblock scripts %}
-</body>
-</html> {% endcomment %}

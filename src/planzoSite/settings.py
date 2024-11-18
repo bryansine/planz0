@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'base',
     'profiles',
     'widget_tweaks',
+    'daraja',
+    'django_daraja',
     #social login
     'django.contrib.sites',
     'allauth',
@@ -113,8 +115,12 @@ WSGI_APPLICATION = 'planzoSite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'MzuiTdtXbJqtIpIqOnKgOrSjklRQaHCB',
+        'HOST': 'junction.proxy.rlwy.net',  # Host from DATABASE_PUBLIC_URL
+        'PORT': '30019',  # Port from DATABASE_PUBLIC_URL
     }
 }
 
@@ -197,6 +203,26 @@ AUTHENTICATION_BACKENDS = (
 # login settings for redirecting ater successfull login
 LOGIN_REDIRECT_URL = 'home:home'
 LOGOUT_REDIRECT_URL = 'home:home'
+
+
+#daraja-config
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+MPESA_ENVIRONMENT = 'sandbox'
+MPESA_CONSUMER_KEY = 'wrKzDu38pyQ5xgN4eftvFGZ04Z1aAvlphWMT2G88nfcyZxtK'
+MPESA_CONSUMER_SECRET = 'xxTOmsb6MD7Z3GUlEUioAbvg15ZeBQ6kEmuj3AKrloMKHnnRGvHVl78Ba5VF3UZE'
+MPESA_SHORTCODE = '174379'
+MPESA_EXPRESS_SHORTCODE = '174379'
+MPESA_SHORTCODE_TYPE = 'paybill'
+MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
+MPESA_INITIATOR_USERNAME = 'testapi'
+MPESA_INITIATOR_SECURITY_CREDENTIAL = 'Safaricom999!*!'
+MPESA_CALLBACK_URL = 'https://mydomain.com/path'  
+
+MPESA_INITIATOR_USERNAME = 'your_initiator_username'
+MPESA_INITIATOR_SECURITY_CREDENTIAL = 'your_initiator_security_credential'
+
+
 
 
 

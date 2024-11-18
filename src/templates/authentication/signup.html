@@ -1,21 +1,33 @@
 {% load static %}
-{% load socialaccount %} 
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!-- Custom CSS -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/favicon1.ico' %}" type="image/x-icon">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700&display=swap" rel="stylesheet">
+
     <!-- Semantic UI -->
-    <link rel="stylesheet" type='text/css' href=" https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-    <script src=" https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <title>{% block title %}planzO - Sign Up{% endblock title %}</title>
-    {% load widget_tweaks %} 
+
+    {% load widget_tweaks %}
 </head>
+<body>
 <style>
   body {
       font-family: "Raleway", sans-serif;
@@ -46,25 +58,9 @@
       margin-bottom: 20px;
   }
 
-  /* Input Label */
-  .inputLabel {
-      display: block;
-      text-align: left;
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 5px;
-  }
-
   .userInputDiv,
   .userInputRoleDiv {
       margin-bottom: 20px;
-  }
-
-  .border {
-      display: block;
-      height: 1px;
-      background-color: #000;
-      margin-top: 2px;
   }
 
   .loginBtn {
@@ -101,22 +97,13 @@
       text-decoration: underline;
   }
 
-  /* Google Login Button Styling */
-  .googleLoginBtn {
-      background-color: #4285F4;
-      color: white;
-      padding: 10px;
-      border: none;
+ 
+  .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
       cursor: pointer;
-      width: 100%;
-      border-radius: 5px;
-      margin-top: 20px;
-      text-align: center;
-      font-size: 16px;
-  }
-
-  .googleLoginBtn:hover {
-      background-color: #357ae8;
   }
 </style>
 
@@ -139,13 +126,15 @@
                 {% render_field form.role placeholder=form.role.label class+="form-control" %}
             </div>
 
-            <div class="userInputDiv" data-text="Password">
-                {% render_field form.password1 placeholder=form.password1.label class+="form-control" %}
+            <div class="userInputDiv" data-text="Password" style="position: relative;">
+                {% render_field form.password1 placeholder=form.password1.label class+="form-control" id="password1" %}
+                <span class="toggle-password" onclick="togglePassword('password1')">👁️</span>
                 <span class="border"></span>
             </div>
 
-            <div class="userInputDiv" data-text="Password">
-                {% render_field form.password2 placeholder=form.password2.label class+="form-control" %}
+            <div class="userInputDiv" data-text="Confirm Password" style="position: relative;">
+                {% render_field form.password2 placeholder=form.password2.label class+="form-control" id="password2" %}
+                <span class="toggle-password" onclick="togglePassword('password2')">👁️</span>
                 <span class="border"></span>
             </div>
 
@@ -153,15 +142,6 @@
                 Sign Up<div class="arrow-wrapper"><div class="arrow"></div></div>
             </button>
         </form>
-{% comment %} 
-        <!-- Google Login Button -->
-        <a href="{% provider_login_url 'google' %}?next=/" class="googleLoginBtn">Login with Google</a> 
-{% endcomment %}
-
-        {% if user.is_authenticated %}
-        <p>You are signed in as {{user.email}}</p>
-        <a href="Logout">Logout</a>
-        {% endif %}
 
         <a class="link" href="{% url 'login' %}">Already Have an Account</a>
     </div>
@@ -169,6 +149,21 @@
 {% endblock content %}
 
 {% block scripts %}
-<script type="text/javascript">
+<script>
+    // Function to toggle password visibility
+    function togglePassword(fieldId) {
+        const passwordField = document.getElementById(fieldId);
+        const toggleIcon = passwordField.nextElementSibling;
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            toggleIcon.textContent = '🙈';
+        } else {
+            passwordField.type = 'password';
+            toggleIcon.textContent = '👁️'; 
+        }
+    }
 </script>
 {% endblock scripts %}
+</body>
+</html>

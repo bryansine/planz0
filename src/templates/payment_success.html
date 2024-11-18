@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'images/favicon1.ico' %}" type="image/x-icon">
+    <title>Payment Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+        .success {
+            background: #4caf50;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Payment Initiated!</h1>
+    <div class="success">
+        <p>Your payment process has been initiated.</p>
+        <p>Please check your phone messages for a confirmation of the payment.</p>
+        <p>If you receive the confirmation message, your payment will be successfully completed.</p>
+        {% comment %} <p>Phone Number: {{ phone_number }}</p>
+        <p>Amount: KES {{ amount }}</p>
+        <p>Description: {{ transaction_desc }}</p> {% endcomment %}
+    </div>
+    <a href="{% url 'home:home' %}" class="button">Go back to Events</a>
+</body>
+</html>
