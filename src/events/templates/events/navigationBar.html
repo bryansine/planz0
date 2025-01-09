@@ -53,3 +53,72 @@
     {% endblock scripts %}
 </body>
 </html>
+
+
+
+
+
+
+
+{% comment %} 
+import qrcode
+from io import BytesIO
+from django.core.files.base import ContentFile
+from django.core.mail import EmailMessage
+
+
+def sendUUID(subject, recipient_name, sender_email, recipient_email, uuid, event):
+    # Generate QR code
+    qr_data = f"Event: {event.title}\nDate: {event.date}\nLocation: {event.venue}\nSecret Code: {uuid}"
+    qr = qrcode.QRCode(version=1, box_size=10, border=5)
+    qr.add_data(qr_data)
+    qr.make(fit=True)
+
+    # Create an image file for the QR code
+    qr_image = qr.make_image(fill_color="black", back_color="white")
+    buffer = BytesIO()
+    qr_image.save(buffer, format="PNG")
+    qr_code_file = ContentFile(buffer.getvalue(), name=f"{event.title}_ticket.png")
+
+    # Construct the email
+    message = f"""
+    <html>
+    <body>
+    <h1>Dear {recipient_name},</h1>
+    
+    <p>Thank you for choosing Triply.co to buy your ticket for the upcoming event!. To view the your ticket details, simply click link below:</p>
+    
+    <p>We are committed to making your trip with Triply.co a memorable one. If you have any special requests or requirements,
+    please let us know, and we will do our best to accommodate them Thank you again for choosing Triply.co. We look forward to
+    creating amazing memories with you!</p>
+    
+    <p>For any inquiries or assistance, our dedicated customer support team is available to help. Feel free to contact us at undefined.</p>
+    
+    <p>Best Regards,
+     Triply
+    </p>
+
+    <p>🎉 Your event ticket details:</p>
+    <p><strong>Event:</strong> {event.title}</p>
+    
+    <p><strong>Date:</strong> {event.date}</p>
+    <p><strong>Venue:</strong> {event.venue}</p>
+    <p><strong>Your Secret Code:</strong> {uuid}</p>
+
+    <p>Attached below is your QR code for easy event access.</p>
+
+    <p>Cheers,<br>The planzO Team 🚀</p>
+    </body>
+    </html>
+    """
+
+    email = EmailMessage(
+        subject,
+        message,
+        sender_email,
+        [recipient_email]
+    )
+    email.content_subtype = "html"
+    email.attach(qr_code_file.name, qr_code_file.read(), "image/png")
+    email.send(fail_silently=False)
+ {% endcomment %}

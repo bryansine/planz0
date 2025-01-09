@@ -168,7 +168,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# login settings for login aster failed login
+# login settings for login after failed login
 LOGIN_URL = 'accounts/login/'
 LOGOUT_URL = '/logout/'
 
@@ -219,8 +219,8 @@ MPESA_INITIATOR_USERNAME = 'testapi'
 MPESA_INITIATOR_SECURITY_CREDENTIAL = 'Safaricom999!*!'
 MPESA_CALLBACK_URL = 'https://mydomain.com/path'  
 
-MPESA_INITIATOR_USERNAME = 'your_initiator_username'
-MPESA_INITIATOR_SECURITY_CREDENTIAL = 'your_initiator_security_credential'
+# MPESA_INITIATOR_USERNAME = 'your_initiator_username'
+# MPESA_INITIATOR_SECURITY_CREDENTIAL = 'your_initiator_security_credential'
 
 
 

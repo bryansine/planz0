@@ -31,7 +31,6 @@ urlpatterns = [
     path('signup/',signUpView, name='signup'),
     path('accounts/login/', loginView, name='login'),
     path('accounts/signup/', signUpView, name='signup'),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('home/', include('events.urls', namespace='events')),
     path('profiles/', include('profiles.urls', namespace='profiles')),
     #payment urls
