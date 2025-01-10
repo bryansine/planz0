@@ -145,11 +145,7 @@ def sendUUID(subject, recipient_name, sender_email, recipient_email, uuid, event
 
         <p>Thank you again for choosing Triply.co. We look forward to creating amazing memories with you!</p>
 
-        <p>For any inquiries or assi        # Path to the Triply logo image
-    logo_path = "planz0/src/static/images/tripply1.png"
-    with open(logo_path, "rb") as logo_file:
-        logo_data = logo_file.read()
-stance, our dedicated customer support team is available to help. 
+        <p>For any inquiries or assistance, our dedicated customer support team is available to help. 
         Feel free to contact us at <a href="mailto:support@triply.co">support@triply.co</a>.</p>
 
         <p>Best Regards,<br>{from_name}</p>
@@ -264,30 +260,6 @@ def eventDetailView(request, id):
         'uuid': uuid,  
     }
     return HttpResponse(template.render(context, request))
-
-
-# def sendUUID(subject, recipient_name, sender_email, recipient_email, uuid, event):
-#     message = f"""
-#     <html>
-#     <body>
-#     <p>Hi {recipient_name} 👋,</p>
-
-#     <p>🎉 Your adventure is about to begin! We've reserved your spot for an incredible event, and we're thrilled to share the details with you.</p>
-
-#     <p><strong>Event:</strong> {event.title}</p>
-#     <p><strong>Date:</strong> {event.date}</p>
-
-#     <p><strong>Your Secret Code:</strong> : {uuid}</p>
-
-#     <p>Keep this code handy—it's your key to unlocking an unforgettable experience! 🗝️✨</p>
-
-#     <p>We can't wait to see you there and make some amazing memories together!</p>
-
-#     <p>Cheers,<br>The planzO Team 🚀</p>
-#     </body>
-#     </html>
-#     """
-#     send_mail(subject, message, f'planzO <{sender_email}>', [recipient_email], fail_silently=False, html_message=message)
 
 
 
