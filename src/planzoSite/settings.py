@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
 # Add the CSRF_TRUSTED_ORIGINS setting
 CSRF_TRUSTED_ORIGINS = [
     'https://localhost:8000',
+    
     # Add other trusted origins if needed
 ]
 
@@ -118,11 +119,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'MzuiTdtXbJqtIpIqOnKgOrSjklRQaHCB',
+        'PASSWORD': config('DB_PASSWORD'),
         'HOST': 'junction.proxy.rlwy.net',  # Host from DATABASE_PUBLIC_URL
         'PORT': '30019',  # Port from DATABASE_PUBLIC_URL
     }
 }
+
 
 
 # Password validation
@@ -171,6 +173,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # login settings for login after failed login
 LOGIN_URL = 'accounts/login/'
 LOGOUT_URL = '/logout/'
+# LOGOUT_REDIRECT_URL = '/'
 
 
 # Default primary key field type
