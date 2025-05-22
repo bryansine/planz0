@@ -112,7 +112,7 @@ WSGI_APPLICATION = 'planzoSite.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/5.1/ref/
 
 DATABASES = {
     'default': {
@@ -220,7 +220,8 @@ MPESA_SHORTCODE_TYPE = 'paybill'
 MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
 MPESA_INITIATOR_USERNAME = 'testapi'
 MPESA_INITIATOR_SECURITY_CREDENTIAL = 'Safaricom999!*!'
-MPESA_CALLBACK_URL = 'https://mydomain.com/path'  
+MPESA_CALLBACK_URL = 'https://mydomain.com/path'
+
 
 # MPESA_INITIATOR_USERNAME = 'your_initiator_username'
 # MPESA_INITIATOR_SECURITY_CREDENTIAL = 'your_initiator_security_credential'
