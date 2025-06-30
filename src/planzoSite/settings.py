@@ -120,7 +120,7 @@ DATABASES = {
         'NAME': 'railway',
         'USER': 'postgres',
         'PASSWORD': config('DB_PASSWORD'),
-        'HOST': 'junction.proxy.rlwy.net',  # Host from DATABASE_PUBLIC_URL
+        'HOST': 'junction.proxy.rlwy.net',
         'PORT': '30019',  # Port from DATABASE_PUBLIC_URL
     }
 }
