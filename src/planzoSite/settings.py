@@ -24,7 +24,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
@@ -33,7 +32,6 @@ ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
 CSRF_TRUSTED_ORIGINS = [
     'https://localhost:8000',
     
-    # Add other trusted origins if needed
 ]
 
 SITE_ID = 2
@@ -47,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #Our apps
     'events',
     'base',
     'profiles',
@@ -59,7 +56,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google', # Google authentication
+    'allauth.socialaccount.providers.google',
 ]
 
 
@@ -72,7 +69,6 @@ SOCIAL_ACCOUNT_PROVIDERS = {
     "google": {
         "SCOPE": ["profile", "email"],
         "AUTH_PARAMS": {"access_type": "online"},
-        # Add client details
         "CLIENT_ID": GOOGLE_CLIENT_ID,
         "SECRET": GOOGLE_CLIENT_SECRET,
     }
@@ -86,7 +82,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # allauth.middleware.
     'allauth.account.middleware.AccountMiddleware',
 ]
 
@@ -114,14 +109,21 @@ WSGI_APPLICATION = 'planzoSite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': config('DB_PASSWORD'),
+#         'HOST': 'junction.proxy.rlwy.net',
+#         'PORT': '30019', 
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': 'junction.proxy.rlwy.net',
-        'PORT': '30019',  # Port from DATABASE_PUBLIC_URL
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3', 
     }
 }
 
