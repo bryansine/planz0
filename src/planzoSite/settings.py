@@ -37,7 +37,6 @@ CSRF_TRUSTED_ORIGINS = [
 SITE_ID = 2
 
 INSTALLED_APPS = [
-    #Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
