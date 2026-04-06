@@ -14,12 +14,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from base.views import home
-from django.urls import path, include
-from .views import loginView, signUpView, logoutUser, events, contact, petition_signup, about, pay, check_payment_status
+from django.contrib import admin
 from django.conf import settings
+from django.urls import path, include
 from django.conf.urls.static import static
+from .views import loginView, signUpView, logoutUser, events, contact, petition_signup, about, pay, check_payment_status
 
 
 urlpatterns = [
@@ -33,20 +33,15 @@ urlpatterns = [
     path('accounts/signup/', signUpView, name='signup'),
     path('home/', include('events.urls', namespace='events')),
     path('profiles/', include('profiles.urls', namespace='profiles')),
-    #payment urls
-    path('daraja/', include('daraja.urls')),  #mpesa daraja url
-    path('pay/', pay, name='pay'),  # mpesay daraja
+    path('daraja/', include('daraja.urls')),
+    path('pay/', pay, name='pay'),
     path('check-payment-status/', check_payment_status, name='check_payment_status'),
     
-
-    # Admin routes(external packages access)
     path('accounts/login/', loginView, name='login'),
     path('accounts/signup/', signUpView, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
-    # url for social logins
     path("accounts/", include("allauth.urls")),
 ]
 
-# url patterns for events"
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
