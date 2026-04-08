@@ -21,12 +21,10 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from .views import loginView, signUpView, logoutUser, events, contact, petition_signup, about, pay, check_payment_status
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('base.urls')),
     
-
     path('login/', loginView, name='login'),
     path('signup/',signUpView, name='signup'),
     path('accounts/login/', loginView, name='login'),
@@ -36,7 +34,6 @@ urlpatterns = [
     path('daraja/', include('daraja.urls')),
     path('pay/', pay, name='pay'),
     path('check-payment-status/', check_payment_status, name='check_payment_status'),
-    
     path('accounts/login/', loginView, name='login'),
     path('accounts/signup/', signUpView, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
